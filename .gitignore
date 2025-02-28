@@ -1,0 +1,5 @@
+data/plantnet_300K/images/**
+data/plantnet_300K/plantnet_300K/** 
+data/plantnet_300K/process_images/** 
+src/example_checkpoints/**
+requirements.txt
