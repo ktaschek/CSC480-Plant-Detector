@@ -3,4 +3,6 @@ data/plantnet_300K/plantnet_300K/**
 data/plantnet_300K/process_images/** 
 src/example_checkpoints/**
 requirements.txt
-**.pth
+best_model*.*
+split_ttv*
+plantnet_300K*
