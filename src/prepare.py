@@ -1,12 +1,4 @@
 """
-prepare.py
-
-This script processes the PlantNet dataset that is already split into 'train', 'val', and 'test' folders.
-For each split:
- • It resizes all images to a fixed target size (e.g., 224×224).
- • It saves the processed images into an output directory while preserving the folder structure.
- • It creates a JSON file (class_mapping.json) mapping class names to indices (based on the train split).
- 
 Usage:
     python prepare.py --input_dir /path/to/raw_dataset --output_dir /path/to/processed_dataset --target_size 224
 """

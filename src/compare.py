@@ -1,13 +1,4 @@
-#!/usr/bin/env python3
 """
-compare.py
-
-This script iterates over all checkpoint files in a specified directory and for each checkpoint:
-  - Loads a ResNet-50 model (with its final FC layer adjusted for your number of classes)
-  - Prints parameter details: total parameters, trainable parameters, and total number of modules (layers)
-  - Evaluates the model on a validation set (using an ImageFolder structure)
-  - Displays the validation loss and accuracy
-
 Usage:
     python compare.py --checkpoint_dir ./checkpoints --val_dir ./prepared_dataset/val --num_classes 100 --batch_size 32
 """
@@ -19,10 +10,6 @@ import torch.nn as nn
 from torchvision import datasets, models, transforms
 
 def load_model_from_checkpoint(checkpoint_path, num_classes):
-    """
-    Loads a ResNet-50 model with the final FC layer adjusted to num_classes.
-    This function handles checkpoints saved directly as a state_dict or as a dictionary with a 'model_state_dict' key.
-    """
     model = models.resnet50(pretrained=False)
     model.fc = nn.Linear(model.fc.in_features, num_classes)
     
@@ -36,20 +23,12 @@ def load_model_from_checkpoint(checkpoint_path, num_classes):
     return model
 
 def get_model_details(model):
-    """
-    Returns a tuple with the total number of parameters, trainable parameters,
-    and total number of modules (layers) in the model.
-    """
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     num_modules = sum(1 for _ in model.modules())
     return total_params, trainable_params, num_modules
 
 def evaluate_model(model, dataloader, criterion, device):
-    """
-    Evaluates the model on the given dataloader.
-    Returns the average loss and accuracy.
-    """
     model.eval()
     running_loss = 0.0
     running_corrects = 0
