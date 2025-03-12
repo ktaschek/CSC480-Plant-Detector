@@ -4,5 +4,5 @@ data/plantnet_300K/process_images/**
 src/example_checkpoints/**
 requirements.txt
 best_model*.*
-split_ttv*
+split_ttv_dataset_type_of_plants**
 plantnet_300K*
